@@ -30,7 +30,7 @@ class ShortenerApi < Sinatra::Base
 
   delete '/:code' do
     @link = Shortener::Services::LinkDestroyer
-              .call(params[:code])
+              .call(code: params[:code])
 
     return 404 unless @link
 

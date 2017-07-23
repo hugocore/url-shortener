@@ -10,7 +10,7 @@ module Shortener
       end
 
       def call()
-        @link = Shortener::Services::LinkResolver.call(@code)
+        @link = Shortener::Models::Link.find_by(code: @code)
 
         return unless @link
 
