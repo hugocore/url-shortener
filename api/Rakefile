@@ -1,0 +1,9 @@
+require 'sinatra/activerecord/rake'
+
+Rake.add_rakelib File.expand_path('lib/tasks', File.dirname(__FILE__))
+
+namespace :db do
+  task :load_config do
+    require_relative File.expand_path('config/boot', File.dirname(__FILE__))
+  end
+end
