@@ -2,7 +2,7 @@ require 'json'
 
 class ShortenerApi < Sinatra::Base
   get '/' do
-    @links = Link.all
+    @links = Shortener::Models::Link.all
   end
 
   get '/:code' do
@@ -20,12 +20,7 @@ class ShortenerApi < Sinatra::Base
     @link = Shortener::Services::LinkGenerator
               .call(url: @payload[:url], code: @payload[:code])
 
-    content_type :json
-
-    {
-      url: @payload[:url],
-      short_url: @link.code,
-    }.to_json
+    { url: @payload[:url], short_url: @link.code }.to_json
   end
 
   delete '/:code' do
