@@ -7,6 +7,7 @@ class CreateLinks < ActiveRecord::Migration[5.1]
       t.timestamps
 
       t.index :code
+      t.index :url
     end
   end
 end
