@@ -74,6 +74,22 @@ describe 'ShortenerApi' do
         expect(response['short_url']).not_to be_empty
         expect(response['url']).to eq('http://www.farmdrop.com')
       end
+
+      it 'supports other protocols than just HTTP' do
+        post '/', { url: 'ftp://farmdrop.com' }.to_json
+
+        response = JSON.parse(last_response.body)
+
+        expect(response['url']).to eq('ftp://farmdrop.com')
+      end
+
+      it 'adds http protocol by default when no protocol is provided' do
+        post '/', { url: 'www.farmdrop.com' }.to_json
+
+        response = JSON.parse(last_response.body)
+
+        expect(response['url']).to eq('http://www.farmdrop.com')
+      end
     end
 
     context 'with valid url and custom code' do
