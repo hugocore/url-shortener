@@ -13,7 +13,7 @@ module Shortener
       def call()
         @link = Shortener::Models::Link.find_by_url(@url)
 
-        @link || Shortener::Models::Link.create!(url: @url, code: @code)
+        @link || Shortener::Models::Link.create(url: @url, code: @code)
       end
     end
   end

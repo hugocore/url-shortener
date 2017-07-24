@@ -6,8 +6,7 @@ class ShortenerApi < Sinatra::Base
   end
 
   get '/:code' do
-    @link = Shortener::Services::LinkResolver
-              .call(code: params[:code])
+    @link = Shortener::Services::LinkResolver.call(code: params[:code])
 
     return 404 unless @link
 
@@ -17,15 +16,15 @@ class ShortenerApi < Sinatra::Base
   post '/' do
     @payload = parse_json_body
 
-    @link = Shortener::Services::LinkGenerator
-              .call(url: @payload[:url], code: @payload[:code])
+    @link = Shortener::Services::LinkGenerator.call(url: @payload[:url], code: @payload[:code])
+
+    return error 400, @link.errors.full_messages.first unless @link.valid?
 
     { url: @payload[:url], short_url: @link.code }.to_json
   end
 
   delete '/:code' do
-    @link = Shortener::Services::LinkDestroyer
-              .call(code: params[:code])
+    @link = Shortener::Services::LinkDestroyer.call(code: params[:code])
 
     return 404 unless @link
 
