@@ -6,7 +6,7 @@ module Shortener
       extend Service
 
       def initialize(url:, code:)
-        @url = url
+        @url = sanitize(url)
         @code = code
       end
 
@@ -14,6 +14,12 @@ module Shortener
         @link = Shortener::Models::Link.find_by_url(@url)
 
         @link || Shortener::Models::Link.create(url: @url, code: @code)
+      end
+
+      private
+
+      def sanitize(url)
+        (/:\/\//).match?(url) ? url : "http://#{url}"
       end
     end
   end

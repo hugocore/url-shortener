@@ -20,7 +20,7 @@ class ShortenerApi < Sinatra::Base
 
     return error 400, @link.errors.full_messages.first unless @link.valid?
 
-    { url: @payload[:url], short_url: @link.code }.to_json
+    { url: @link.url, short_url: @link.code }.to_json
   end
 
   delete '/:code' do
