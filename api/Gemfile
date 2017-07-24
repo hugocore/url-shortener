@@ -25,4 +25,6 @@ group :test do
   gem 'json-schema'
   gem 'rack-test'
   gem 'rspec'
+  gem 'simplecov'
+  gem 'ffaker'
 end
