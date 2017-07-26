@@ -11,7 +11,7 @@ LinkCard.propTypes = {
   link: PropTypes.shape({
     url: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
-    clicks: PropTypes.string.isRequired,
+    clicks: PropTypes.number.isRequired,
   }).isRequired
 }
 

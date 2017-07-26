@@ -1,12 +1,12 @@
-import { Map, Set } from 'immutable'
+import { Map, OrderedSet } from 'immutable'
 
 import Link from 'models/Link'
 
 import { GET_ALL_LINKS } from '../actions/getLinks'
 
 const initialState = {
+  allIds: OrderedSet(),
   byId: Map(),
-  allIds: Set(),
 }
 
 const reduceLinks = (state, { data }) => (

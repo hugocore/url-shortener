@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { OrderedSet } from 'immutable'
 import { connect } from 'react-redux'
 
 import Header from './components/Header'
@@ -14,10 +15,12 @@ class LinksDashboardContainer extends Component {
   }
 
   render() {
+    const { links } = this.props
+
     return (
       <div>
         <Header />
-        <LinksTable />
+        <LinksTable links={links} />
       </div>
     )
   }
@@ -26,6 +29,14 @@ class LinksDashboardContainer extends Component {
 LinksDashboardContainer.propTypes = {
 }
 
-export default connect(null)(LinksDashboardContainer)
+const mapStateToProps = (state, ownProps) => ({
+  links: state.links.allIds.reduce((links, id) => {
+    const link = state.links.byId.get(id)
+
+    return link ? links.add(link) : links
+  }, new OrderedSet())
+})
+
+export default connect(mapStateToProps)(LinksDashboardContainer)
 
 export { LinksDashboardContainer }
