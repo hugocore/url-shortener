@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
 import { browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 import freeze from 'redux-freeze'
-import { reducers } from './reducers/index'
+import { reducers } from './reducers'
 import { sagas } from './sagas/index'
 
 // add the middlewares
@@ -20,6 +21,9 @@ middlewares.push(sagaMiddleware)
 if (process.env.NODE_ENV !== 'production') {
   middlewares.push(freeze)
 }
+
+// add thunk for asyn actions
+middlewares.push(thunk)
 
 // apply the middleware
 let middleware = applyMiddleware(...middlewares)
