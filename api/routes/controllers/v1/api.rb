@@ -2,7 +2,7 @@ require 'json'
 
 class ShortenerApi < Sinatra::Base
   get '/' do
-    @links = Shortener::Models::Link.all
+    @links = Shortener::Models::Link.order(id: :desc)
 
     json @links, { each_serializer: LinkSerializer }
   end
