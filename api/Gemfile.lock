@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activemodel (5.1.2)
       activesupport (= 5.1.2)
     activerecord (5.1.2)
@@ -106,6 +108,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sinatra-active-model-serializers (0.1.0)
+      active_model_serializers (= 0.9.3)
     sinatra-activerecord (2.0.13)
       activerecord (>= 3.2)
       sinatra (>= 1.0)
@@ -150,6 +154,7 @@ DEPENDENCIES
   rubocop
   simplecov
   sinatra
+  sinatra-active-model-serializers
   sinatra-activerecord
   sinatra-contrib
   sqlite3
