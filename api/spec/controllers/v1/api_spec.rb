@@ -11,11 +11,13 @@ describe 'ShortenerApi' do
       expected = [
         {
           'code' => link1.code,
+          'short_url' => "#{ENV['BASE_URL']}#{link1.code}",
           'url' => link1.url,
           'clicks' => 0,
         },
         {
           'code' => link2.code,
+          'short_url' => "#{ENV['BASE_URL']}#{link2.code}",
           'url' => link2.url,
           'clicks' => 0,
         },
