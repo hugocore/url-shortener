@@ -10,20 +10,22 @@ describe 'ShortenerApi' do
 
       expected = [
         {
-          code: link1.code,
-          url: link1.url,
-          clicks: 0,
+          'code' => link1.code,
+          'url' => link1.url,
+          'clicks' => 0,
         },
         {
-          code: link2.code,
-          url: link2.url,
-          clicks: 0,
+          'code' => link2.code,
+          'url' => link2.url,
+          'clicks' => 0,
         },
       ]
 
+      response = JSON.parse(last_response.body)
+
       expect(last_response.status).to eq(200)
 
-      expect(last_response.body).to eq(expected)
+      expect(response).to eq(expected)
     end
   end
 

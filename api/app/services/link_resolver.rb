@@ -12,6 +12,8 @@ module Shortener
       def call()
         @link = Shortener::Models::Link.find_by_code(@code)
 
+        return unless @link
+
         @link.increment!(:clicks)
 
         @link
