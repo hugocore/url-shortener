@@ -10,19 +10,15 @@ export default class App extends React.Component {
       <div className="container">
         {this.props.children}
 
-        <footer class="page-footer">
-          <div class="footer-copyright">
-            <div class="container">
-              <div className="row">
-                <div className="col s12 m6">
-                  &copy; {new Date().getFullYear()}
-                  <a class="grey-text text-lighten-4 right" href="http://www.hugosequeira.com"> HugoSequeira.com </a>
-                </div>
+        <footer>
+          <div className="row">
+            <div className="col s12 m6">
+              Made with Sinatra + React.js
+            </div>
 
-                <div className="col s12 m6 pull-right">
-                  Made with Sinatra + React.js
-                </div>
-              </div>
+            <div className="col s12 m6 pull-right">
+              &copy; {new Date().getFullYear()}
+              <a href="http://www.hugosequeira.com" target="_blank"> HugoSequeira.com </a>
             </div>
           </div>
         </footer>
