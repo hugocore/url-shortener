@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const LinkCard = ({ link }) =>
+const LinkCard = ({ link, deleteLinkHandler }) =>
   <div>
     <h3>
       <a href={ link.url }>
@@ -12,7 +12,9 @@ const LinkCard = ({ link }) =>
         { link.short_url }
       </a>
     </h4>
-    <p>Clicks: { link.clicks }</p>
+    <p>
+      Clicks: { link.clicks } - <a href="#" onClick={() => deleteLinkHandler()}>Delete</a>
+    </p>
   </div>
 
 LinkCard.propTypes = {
@@ -20,7 +22,8 @@ LinkCard.propTypes = {
     url: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
     clicks: PropTypes.number.isRequired,
-  }).isRequired
+  }).isRequired,
+  deleteLinkHandler: PropTypes.func.isRequired,
 }
 
 export default LinkCard

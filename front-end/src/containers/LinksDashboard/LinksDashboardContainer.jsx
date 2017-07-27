@@ -7,12 +7,14 @@ import LinksTable from './components/LinksTable'
 
 import getAllLinks from 'redux/links/actions/getLinks'
 import addLink from 'redux/links/actions/addLink'
+import deleteLink from 'redux/links/actions/deleteLink'
 
 class LinksDashboardContainer extends Component {
   componentDidMount() {
     this.fetchLinks()
 
     this.addLinkHandler = this.addLinkHandler.bind(this)
+    this.deleteLinkHandler = this.deleteLinkHandler.bind(this)
   }
 
   fetchLinks() {
@@ -27,6 +29,13 @@ class LinksDashboardContainer extends Component {
     dispatch(addLink(url))
   }
 
+  deleteLinkHandler(url) {
+    const { dispatch } = this.props
+
+    // dispatch(deleteLink(url))
+    console.log('APAGAR!!')
+  }
+
   render() {
     const { links } = this.props
 
@@ -36,7 +45,10 @@ class LinksDashboardContainer extends Component {
         <a href="#" onClick={() => this.fetchLinks()}>
           Refresh
         </a>
-        <LinksTable links={links} />
+        <LinksTable
+          links={links}
+          deleteLinkHandler={this.deleteLinkHandler}
+        />
       </div>
     )
   }
