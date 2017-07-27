@@ -5,7 +5,7 @@ const ADD_LINK = 'ADD_LINK'
 const addLink = (url) => dispatch => {
   const onSuccess = data => ({ type: ADD_LINK, data })
 
-  axios.post(`http://localhost:9292/`, {
+  axios.post(process.env.API_URL, {
       url,
     })
     .then((response) => {

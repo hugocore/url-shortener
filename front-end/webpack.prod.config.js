@@ -13,6 +13,7 @@ module.exports.plugins.push(
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production'),
+      API_URL: JSON.stringify('http://localhost:9292/'),
     }
   })
 )

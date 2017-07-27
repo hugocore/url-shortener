@@ -5,7 +5,7 @@ const GET_ALL_LINKS = 'GET_ALL_LINKS'
 const getAllLinks = () => dispatch => {
   const onSuccess = data => ({ type: GET_ALL_LINKS, data })
 
-  axios.get(`http://localhost:9292/`)
+  axios.get(process.env.API_URL)
     .then((response) => {
       return response.data
     })

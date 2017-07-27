@@ -5,7 +5,7 @@ const DELETE_LINK = 'DELETE_LINK'
 const deleteLink = (code) => dispatch => {
   const onSuccess = code => ({ type: DELETE_LINK, code })
 
-  axios.delete(`http://localhost:9292/${code}`)
+  axios.delete(`${process.env.API_URL}${code}`)
     .then((response) => {
       return response.data
     })
