@@ -63,7 +63,7 @@ describe 'ShortenerApi' do
   end
 
   describe 'POST' do
-    context 'with valid url' do
+    context 'with a valid url' do
       it 'creates short link' do
         expect do
            post '/', { url: 'http://www.farmdrop.com' }.to_json
@@ -96,7 +96,7 @@ describe 'ShortenerApi' do
       end
     end
 
-    context 'with valid url and custom code' do
+    context 'with a valid url and custom code' do
       it 'creates short link' do
         expect do
            post '/', { url: 'http://www.farmdrop.com', code: 'abc123' }.to_json
@@ -146,6 +146,20 @@ describe 'ShortenerApi' do
 
       it 'returns short link code' do
         post '/', { url: 'http://www.farmdrop.com', code: 'robots' }.to_json
+
+        expect(last_response.status).to eq(400)
+      end
+    end
+
+    context 'without a given url' do
+      it 'returns error if URL it is not given' do
+        expect do
+           post '/'
+        end.to change(Shortener::Models::Link.all, :count).by(0)
+      end
+
+      it 'returns short link code' do
+        post '/'
 
         expect(last_response.status).to eq(400)
       end
