@@ -16,7 +16,7 @@ class ShortenerApi < Sinatra::Base
   end
 
   post '/' do
-    @payload = parse_json_body
+    @payload = parse_json_body || {}
 
     @link = Shortener::Services::LinkGenerator.call(url: @payload[:url], code: @payload[:code])
 

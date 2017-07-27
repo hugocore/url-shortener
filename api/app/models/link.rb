@@ -16,9 +16,14 @@ module Shortener
       validates :url, uniqueness: { message: 'already exists' }
 
       before_validation :generate_code, on: :create, unless: :code?
+      before_validation :add_http_prefix_if_necessary, on: :create, if: :url?
 
       def generate_code
         self.code = generate_small_code(:code)
+      end
+
+      def add_http_prefix_if_necessary
+        self.url = "http://#{url}" unless (/:\/\//).match?(url)
       end
     end
   end
