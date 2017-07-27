@@ -31,8 +31,6 @@ class Header extends Component {
   }
 
   render() {
-    const { addLinkHandler } = this.props
-
     return (
       <div className="Header">
         <h2>Shorten your links</h2>

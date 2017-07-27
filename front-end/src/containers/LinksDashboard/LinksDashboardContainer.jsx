@@ -42,7 +42,7 @@ class LinksDashboardContainer extends Component {
 
     return (
       <div>
-        <Header addLinkHandler={this.addLinkHandler} />
+        <Header addLinkHandler={this.addLinkHandler.bind(this)} />
         <a
           className="waves-effect waves-teal btn-flat pull-right"
           onClick={() => this.fetchLinks()}
