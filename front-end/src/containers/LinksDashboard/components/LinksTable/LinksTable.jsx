@@ -8,7 +8,7 @@ const LinksTable = ({ links, deleteLinkHandler }) => {
     <LinkCard key={link.code} link={link} deleteLinkHandler={deleteLinkHandler} />
 
   return (
-    <div>
+    <div className="row">
       {links.map(renderLinkCard)}
     </div>
   )

@@ -26,7 +26,9 @@ class LinksDashboardContainer extends Component {
   addLinkHandler(url) {
     const { dispatch } = this.props
 
-    dispatch(addLink(url))
+    if (url) {
+      dispatch(addLink(url))
+    }
   }
 
   deleteLinkHandler(url) {
@@ -41,7 +43,10 @@ class LinksDashboardContainer extends Component {
     return (
       <div>
         <Header addLinkHandler={this.addLinkHandler} />
-        <a href="#" onClick={() => this.fetchLinks()}>
+        <a
+          className="waves-effect waves-teal btn-flat pull-right"
+          onClick={() => this.fetchLinks()}
+        >
           Refresh
         </a>
         <LinksTable

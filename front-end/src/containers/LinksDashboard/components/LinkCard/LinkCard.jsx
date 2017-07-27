@@ -1,20 +1,25 @@
 import React, { PropTypes } from 'react'
 
 const LinkCard = ({ link, deleteLinkHandler }) =>
-  <div>
-    <h3>
-      <a href={ link.url }>
-        {link.url}
-      </a>
-    </h3>
-    <h4>
-      <a href={ link.short_url }>
-        { link.short_url }
-      </a>
-    </h4>
-    <p>
-      Clicks: { link.clicks } - <a href="#" onClick={() => deleteLinkHandler(link.code)}>Delete</a>
-    </p>
+  <div className="col s12 m6">
+    <div className="card">
+      <div className="card-content white-text">
+        <span className="card-title">
+          <a href={ link.short_url }>
+            {link.short_url}
+          </a>
+        </span>
+        <p>
+          <a href={ link.url }>
+            { link.url }
+          </a>
+        </p>
+      </div>
+      <div className="card-action">
+        <a href="#">Clicks { link.clicks }</a>
+        <a href="#" onClick={() => deleteLinkHandler(link.code)}>Delete</a>
+      </div>
+    </div>
   </div>
 
 LinkCard.propTypes = {

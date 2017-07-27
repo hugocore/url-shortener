@@ -34,14 +34,20 @@ class Header extends Component {
     const { addLinkHandler } = this.props
 
     return (
-      <div>
+      <div className="Header">
+        <h2>Shorten your links</h2>
+        <p>Type your URL and we will shorten it for you! Note that all our links can be accessed by anyone</p>
         <input
           type="text"
+          className="Header--input"
           value={this.state.url}
           onChange={this.handleURLChange}
           onKeyPress={this.handleKeyPress}
         />
-        <button onClick={() => this.submitLink()}>
+        <button
+          className="btn waves-effect waves-light"
+          onClick={() => this.submitLink()}
+        >
           Shorten URL
         </button>
       </div>
