@@ -2,8 +2,16 @@ import React, { PropTypes } from 'react'
 
 const LinkCard = ({ link }) =>
   <div>
-    <h3>{ link.url }</h3>
-    <h4>{ link.code }</h4>
+    <h3>
+      <a href={ link.url }>
+        {link.url}
+      </a>
+    </h3>
+    <h4>
+      <a href={ link.short_url }>
+        { link.short_url }
+      </a>
+    </h4>
     <p>Clicks: { link.clicks }</p>
   </div>
 

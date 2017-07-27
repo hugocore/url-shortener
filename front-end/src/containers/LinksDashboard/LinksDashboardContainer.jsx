@@ -6,12 +6,25 @@ import Header from './components/Header'
 import LinksTable from './components/LinksTable'
 
 import getAllLinks from 'redux/links/actions/getLinks'
+import addLink from 'redux/links/actions/addLink'
 
 class LinksDashboardContainer extends Component {
   componentDidMount() {
+    this.fetchLinks()
+
+    this.addLinkHandler = this.addLinkHandler.bind(this)
+  }
+
+  fetchLinks() {
     const { dispatch } = this.props
 
     dispatch(getAllLinks())
+  }
+
+  addLinkHandler(url) {
+    const { dispatch } = this.props
+
+    dispatch(addLink(url))
   }
 
   render() {
@@ -19,7 +32,10 @@ class LinksDashboardContainer extends Component {
 
     return (
       <div>
-        <Header />
+        <Header addLinkHandler={this.addLinkHandler} />
+        <a href="#" onClick={() => this.fetchLinks()}>
+          Refresh
+        </a>
         <LinksTable links={links} />
       </div>
     )

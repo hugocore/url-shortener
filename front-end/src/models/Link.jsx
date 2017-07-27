@@ -3,6 +3,7 @@ import { Record } from 'immutable'
 const linkObject = {
   code: '',
   url: '',
+  short_url: '',
   clicks: 0,
 }
 
