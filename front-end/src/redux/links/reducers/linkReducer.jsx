@@ -4,7 +4,7 @@ import Link from 'models/Link'
 
 import { GET_ALL_LINKS } from '../actions/getLinks'
 import { ADD_LINK } from '../actions/addLink'
-
+import { DELETE_LINK } from '../actions/deleteLink'
 
 const initialState = {
   allIds: OrderedSet(),
@@ -27,6 +27,13 @@ const addLink = (state, { data }) => (
   }
 )
 
+const deleteLink = (state, { code }) => (
+  {
+    allIds: state.allIds.delete(code),
+    byId: state.byId.delete(code)
+  }
+)
+
 const linksReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_LINKS:
@@ -34,6 +41,9 @@ const linksReducer = (state = initialState, action) => {
 
     case ADD_LINK:
       return addLink(state, action)
+
+    case DELETE_LINK:
+      return deleteLink(state, action)
 
     default:
       return state

@@ -1,23 +1,21 @@
 import axios from 'axios'
 
-const ADD_LINK = 'ADD_LINK'
+const DELETE_LINK = 'DELETE_LINK'
 
-const addLink = (url) => dispatch => {
-  const onSuccess = data => ({ type: ADD_LINK, data })
+const deleteLink = (code) => dispatch => {
+  const onSuccess = code => ({ type: DELETE_LINK, code })
 
-  axios.post(`http://localhost:9292/`, {
-      url,
-    })
+  axios.delete(`http://localhost:9292/${code}`)
     .then((response) => {
       return response.data
     })
     .then((data) => {
-      dispatch(onSuccess(data))
+      dispatch(onSuccess(code))
     })
     .catch((err) => {
       console.error.bind(err)
     })
 }
 
-export default addLink
-export { ADD_LINK }
+export default deleteLink
+export { DELETE_LINK }

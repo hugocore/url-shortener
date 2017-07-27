@@ -32,8 +32,7 @@ class LinksDashboardContainer extends Component {
   deleteLinkHandler(url) {
     const { dispatch } = this.props
 
-    // dispatch(deleteLink(url))
-    console.log('APAGAR!!')
+    dispatch(deleteLink(url))
   }
 
   render() {

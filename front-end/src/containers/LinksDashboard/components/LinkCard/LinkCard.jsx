@@ -13,7 +13,7 @@ const LinkCard = ({ link, deleteLinkHandler }) =>
       </a>
     </h4>
     <p>
-      Clicks: { link.clicks } - <a href="#" onClick={() => deleteLinkHandler()}>Delete</a>
+      Clicks: { link.clicks } - <a href="#" onClick={() => deleteLinkHandler(link.code)}>Delete</a>
     </p>
   </div>
 
