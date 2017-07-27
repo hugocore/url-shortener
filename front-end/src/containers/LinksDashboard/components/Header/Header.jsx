@@ -15,6 +15,14 @@ class Header extends Component {
     this.setState({ url: e.target.value })
   }
 
+  submitLink() {
+    const { addLinkHandler } = this.props
+
+    addLinkHandler(this.state.url)
+
+    this.setState({ url: '' })
+  }
+
   render() {
     const { addLinkHandler } = this.props
 
@@ -22,9 +30,10 @@ class Header extends Component {
       <div>
         <input
           type="text"
+          value={this.state.url}
           onChange={this.handleURLChange}
         />
-        <button onClick={() => addLinkHandler(this.state.url)}>
+        <button onClick={() => this.submitLink()}>
           Shorten URL
         </button>
       </div>
