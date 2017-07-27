@@ -9,6 +9,7 @@ class Header extends Component {
     }
 
     this.handleURLChange = this.handleURLChange.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   handleURLChange(e) {
@@ -23,6 +24,12 @@ class Header extends Component {
     this.setState({ url: '' })
   }
 
+  handleKeyPress(event) {
+    if(event.key == 'Enter') {
+      this.submitLink()
+    }
+  }
+
   render() {
     const { addLinkHandler } = this.props
 
@@ -32,6 +39,7 @@ class Header extends Component {
           type="text"
           value={this.state.url}
           onChange={this.handleURLChange}
+          onKeyPress={this.handleKeyPress}
         />
         <button onClick={() => this.submitLink()}>
           Shorten URL
