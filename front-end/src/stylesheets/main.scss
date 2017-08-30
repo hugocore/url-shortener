@@ -1,0 +1,38 @@
+@import '../../node_modules/materialize-css/dist/css/materialize.min.css';
+
+.Header {
+  width: 100%;
+  display: inline-block;
+  margin: 30px 0px;
+
+  .Header--input {
+    margin-right: 20px !important;
+  }
+}
+
+.pull-right {
+  width: 100%;
+  text-align: right;
+}
+
+.card-content a {
+  color: black;
+}
+
+.card-title a {
+  color: #26a69a;
+}
+
+.card-action a {
+  color: #80cbc4 !important;
+}
+
+footer {
+  margin: 30px 0px;
+  font-size: 0.7em;
+  color: gray;
+
+  a {
+    color: gray;
+  }
+}

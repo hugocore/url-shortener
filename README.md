@@ -1,62 +1,39 @@
 # Url Shortener Code Test
 
-We'd like you to create a URL shortening service.
-- It should have a route where you can send a POST request with a URL in the
-  body, which returns a short URL.
+## Introduction
 
-e.g.
-```
-curl localhost:4000 -XPOST -d '{ "url": "http://www.farmdrop.com" }'
-{ "short_url": "/abc123", "url": "http://www.farmdrop.com" }
-```
+This projects demos a URL Shortener service using Ruby/Sinatra as the back-end and Reac.js/Redux as the front-end. This is a single-page application that reacts to actions performed by the user and keeps an internal state on both back-end and front-end.
 
+On the back-end I decided to use Sinatra to serve as an API to the front-end. In the Ruby world, this tech has been proved to be ideal for when a scalable and light-weight API is needed on comparison to Ruby on Rails and others. I also decided to use SQLLite as a persistence database, only for simplicity reasons. Ideally this project should use a mix of PostgreSQL and Redis to store and cache data. As for testing, I’ve used Rspec to code integration tests using the API endpoints.
 
-- When you send a GET request to a previously returned URL, it should redirect
-  to the POSTed URL.
+The front-end uses React.js as the UI library and Redux as the internal state management system. Testing it’s performed using Jest and Enzyme to achieve a DSL similar to Rspec.
 
-e.g.
-```
-curl -v localhost:4000/abc123
-...
-< HTTP/1.1 301 Moved Permanently
-...
-< Location: http://www.farmdrop.com
-...
-{ "url": "http://www.farmdrop.com" }
+Hence, we obtain a real-world application capable of scaling on different ends. One caveat with this app, it’s that all links are public. Since we don’t have user accounts, once a short link it’s created, no other person can create a second one that points to the same URL. Thus, all short links are static and global.
+
+## Configure
+
+### API
+
+1. Open the `/api` folder and execute:
+
+```bash
+rake db:reset
 ```
 
+2. Start the Thin web server with:
 
-- We'd also like a simple frontend that can create and display shortened URLs
-  without reloading the page.
-- For simplicity, don't worry about persisting the URLs between restarts (ie,
-  we don't need it to talk to an external database).
+```bash
+rackup
+```
 
-Use whatever languages and frameworks you are comfortable with. Don't worry
-about getting the whole thing working flawlessly, this is more to see how you
-structure a program. Please don't spend more than a few hours on it.
+### Front-end
 
-Bonus points:
+1. Navigate to `/frontend` and execute:
 
-- I often forget to type "http://" at the start of a URL. It would be nice if
-  this was handled by the application (frontend or backend is up to you).
-- We like to see how you approach the problem, so a few git commits with a
-  clear message about what you're doing are better than one git commit with
-  everything in it.
-- We like tests. We don't expect a full test suite, but some tests would be
-  nice to see. Its up to you whether thats integration, unit or some other
-  level of testing.
-- We'd be very happy to see a Dockerfile to run the project. This by no means a
-  requirement, so don't go reading the Docker docs if you've never worked with
-  it.
+```bash
+brew install yarn
+yarn install
+yarn start
+```
 
-## Submission
-
-Please clone this repository, write some code and update this README with a
-guide of how to run it.
-
-Either send us a link to the repository on somewhere like github or bitbucket
-(bitbucket has free private repositories) or send us a git bundle.
-
-    git bundle create name-url-shortener-test.bundle master
-
-And send us the resulting `name-url-shortener-test.bundle` file.
+2. Open `http://localhost:8080/` in your browser

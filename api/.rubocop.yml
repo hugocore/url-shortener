@@ -1,0 +1,30 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'db/**/*'
+
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Max: 100
+
+# Configuration parameters: Exclude.
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+# Assignment Branch Condition size
+Metrics/AbcSize:
+  Max: 25
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false

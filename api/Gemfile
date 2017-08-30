@@ -1,0 +1,31 @@
+source 'https://rubygems.org'
+
+gem 'dotenv'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'sinatra-activerecord'
+gem 'sinatra-active-model-serializers'
+gem 'sqlite3'
+gem 'rake'
+gem 'rack'
+gem 'rack-contrib', require: false
+gem 'rack-cors'
+gem 'rack-timeout'
+gem 'grape-entity'
+gem 'thin'
+
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'rerun'
+  gem 'rubocop'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'json-schema'
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'ffaker'
+end

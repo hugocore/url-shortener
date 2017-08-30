@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["import"],
+  "settings": {
+    "import/resolver": {
+      "webpack": { config: './webpack.dev.config.js' }
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "semi": ["error", "never"],
+    "global-require": 0,
+    "react/forbid-prop-types": 0,
+    "no-console": 0,
+    "no-underscore-dangle": 0,
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "import/no-named-as-default-member": 0,
+  }
+}

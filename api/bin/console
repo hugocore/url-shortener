@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require File.expand_path('../../config/boot', __FILE__)
+
+require 'pry'
+Pry.start
