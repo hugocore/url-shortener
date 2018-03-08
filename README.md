@@ -1,5 +1,9 @@
 # Url Shortener Code Test
 
+![Demo](url-shortener.png)
+
+[Download Demo](https://github.com/hugocore/url-shortener/raw/master/demo.mov)
+
 ## Introduction
 
 This projects demos a URL Shortener service using Ruby/Sinatra as the back-end and Reac.js/Redux as the front-end. This is a single-page application that reacts to actions performed by the user and keeps an internal state on both back-end and front-end.
